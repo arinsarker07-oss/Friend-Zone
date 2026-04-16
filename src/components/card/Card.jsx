@@ -5,6 +5,7 @@ const appsPromise = async () => {
     const data = await res.json();
     return data;
 };
+
 const Card = async () => {
     const friendsData = await appsPromise();
 

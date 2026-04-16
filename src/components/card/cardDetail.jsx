@@ -1,13 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import {
-    FiBell,
-    FiArchive,
-    FiTrash2,
-    FiPhone,
-    FiMessageSquare,
-    FiVideo
+import { FiBell, FiArchive, FiTrash2, FiPhone, FiMessageSquare, FiVideo
 } from 'react-icons/fi';
 const statusColors = {
 

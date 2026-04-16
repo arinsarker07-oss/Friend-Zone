@@ -1,9 +1,9 @@
 
-import Banner from "@/banner/Banner";
-import Card from "@/card/Card";
-import CardDetail from "@/card/cardDetail";
-import Footer from "@/footer/footer";
-import Navbar from "@/hrml/navbar";
+import Banner from "@/components/banner/Banner";
+import Card from "@/components/card/Card";
+import CardDetail from "@/components/card/cardDetail";
+import Footer from "@/components/footer/footer";
+import Navbar from "@/components/Navbar/navbar";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
    {/* <Footer></Footer> */}
    <Banner></Banner>
    {/* <CardDetail></CardDetail> */}
-   {/* <Card></Card> */}
+   <Card></Card>
     </>
    
   );
