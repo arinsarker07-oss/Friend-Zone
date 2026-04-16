@@ -1,5 +1,5 @@
 import React from 'react';
-import CardDetail from './cardDetail';
+import AllCard from './allCard';
 const appsPromise = async () => {
     const res = await fetch("http://localhost:3000//card.json");
     const data = await res.json();
@@ -17,7 +17,7 @@ const Card = async () => {
                 </header>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {friendsData.map((individualFriend) => (
-                        <CardDetail
+                        <AllCard
                             key={individualFriend.id}
                             friend={individualFriend}
                         />
