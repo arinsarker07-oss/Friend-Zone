@@ -81,15 +81,15 @@ const cardDetailInfo = async ({ params }) => {
                             <div className="flex-1 space-y-10">
                                 <div className="grid grid-cols-3 gap-4">
                                     <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center">
-                                        <div className="text-4xl font-semibold text-[#244D3F]">{person.days_since_contact}</div>
+                                        <div className="md:text-4xl text-xl font-semibold text-[#244D3F]">{person.days_since_contact}</div>
                                         <div className=" text-[#64748B] mt-1">Days Since Contact</div>
                                     </div>
                                     <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center">
-                                        <div className="text-4xl font-semibold text-[#244D3F]">{person.goal}</div>
+                                        <div className="md:text-4xl text-xl font-semibold text-[#244D3F]">{person.goal}</div>
                                         <div className=" text-[#64748B] mt-1">Goal (Days)</div>
                                     </div>
                                     <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center">
-                                        <div className="text-4xl font-semibold text-[#244D3F]">
+                                        <div className="md:text-4xl text-xl font-semibold text-[#244D3F]">
                                             {new Date(person.next_due_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                         </div>
                                         <div className=" text-[#64748B] mt-1">Next Due</div>

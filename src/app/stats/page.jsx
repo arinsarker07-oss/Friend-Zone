@@ -19,7 +19,7 @@ const { installContact } = useContext (ContactContext)
     { name: 'Video', value: videoCount },
   ];
   return (
-    <div className=" container mx-auto my-10 w-full h-[600px] bg-white p-12 rounded-xl shadow-lg ">
+    <div className=" container mx-auto my-10 w-full h-[600px] bg-white p-2 md:p-12 rounded-xl shadow-lg ">
       <h2 className="md:text-3xl font-bold mb-4 text-center text-gray-800">Friend Activity Stats</h2>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
