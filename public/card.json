@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Shah Rukh Khan",
-    "picture": "https://i.ibb.co.com/ccCTjhQb/Shah-Rukh-Khan-500x500.jpg",
+    "picture": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?fm=jpg&q=80&w=500",
     "email": "srk@gmail.com",
     "days_since_contact": 2,
     "status": "On_Track",
@@ -14,7 +14,7 @@
   {
     "id": 2,
     "name": "Virat Kohli",
-    "picture": "https://i.ibb.co.com/7xTB6vW3/images.jpg",
+    "picture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fm=jpg&q=80&w=500",
     "email": "virat.runmachine@gmail.com",
     "days_since_contact": 15,
     "status": "almost_due",
