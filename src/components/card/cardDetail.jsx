@@ -1,15 +1,19 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { FiBell, FiArchive, FiTrash2, FiPhone, FiMessageSquare, FiVideo
+import {
+    FiBell, FiArchive, FiTrash2, FiPhone, FiMessageSquare, FiVideo,
 } from 'react-icons/fi';
+import TogoleButton from '../btnhandle/btnhandle';
 const statusColors = {
-
-    active: "badge-success",
+    On_Track: "badge-success",
     almost_due: "badge-warning",
     overdue: "badge-error"
 };
 
+const handleButtonClick =() => {
+    console.log("btn click");
+}
 
 const CardDetail = async () => {
 
@@ -18,18 +22,19 @@ const CardDetail = async () => {
     console.log(persondata);
     return (
         <div>
-            {persondata.map((person) => { return (
+            {persondata.map((person) => {
+                return (
                     <div key={person.id} className="max-w-5xl mx-auto p-6  rounded-2xl ">
                         <div className="flex flex-col md:flex-row gap-6">
                             <div className="w-full md:w-1/3 bg-white rounded-xl border border-gray-100 shadow-sm p-8 flex flex-col items-center text-center">
                                 <div className="relative">
-                                  <Image
-                                         src={person.picture}
+                                    <Image
+                                        src={person.picture}
                                         alt={person.name}
                                         width={90}
                                         height={90}
                                         className="w-24 h-24 rounded-full object-cover mb-4 border-2 border-gray-100"
-                                  />
+                                    />
                                 </div>
                                 <h2 className="text-xl font-bold text-gray-800 mb-1">{person.name}</h2>
                                 <span className={`text-[10px] uppercase font-bold  mb-2 badge badge-sm ${statusColors[person.status]}`}>
@@ -92,7 +97,7 @@ const CardDetail = async () => {
                                 <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
                                     <h3 className="font-bold text-[#244D3F] mb-8">Quick Check-In</h3>
                                     <div className="grid grid-cols-3 gap-4">
-                                        <button className="flex flex-col items-center justify-center p-5 bg-gray-50 rounded-xl hover:bg-blue-50 transition group">
+                                        <button onClick={() => handleButtonClick("lkjdlkj")} className="flex flex-col items-center justify-center p-5 bg-gray-50 rounded-xl hover:bg-blue-50 transition group">
                                             <FiPhone className="text-2xl text-gray-700 group-hover:text-blue-600 mb-2" />
                                             <span className="text-[10px] font-bold uppercase text-gray-500">Call</span>
                                         </button>
@@ -110,10 +115,11 @@ const CardDetail = async () => {
                             </div>
                         </div>
                     </div>
-          
-            )})}
+
+                )
+            })}
         </div>
-            )
+    )
 };
 
 export default CardDetail;

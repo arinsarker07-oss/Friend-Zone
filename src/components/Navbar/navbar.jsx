@@ -24,7 +24,7 @@ const Navbar = () => {
     ]
     return (
         <>
-            <div className="flex justify-between container mx-auto navbar bg-base-100 shadow-sm">
+            <div className="flex flex-col md:flex-row justify-between container mx-auto navbar bg-base-100 shadow-sm">
                 <a className=" text-2xl font-bold"><span className='text-[#1F2937]'>Keen</span><span className='text-[#244D3F]'>Keeper</span></a>
                 <div className=''>
                     {

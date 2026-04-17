@@ -1,4 +1,5 @@
 
+import TogoleButton from '@/components/btnhandle/btnhandle';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
@@ -106,18 +107,7 @@ const cardDetailInfo = async ({ params }) => {
                                 <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
                                     <h3 className="font-bold text-[#244D3F] mb-8">Quick Check-In</h3>
                                     <div className="grid grid-cols-3 gap-4">
-                                        <button className="flex flex-col items-center justify-center p-5 bg-gray-50 rounded-xl hover:bg-blue-50 transition group">
-                                            <FiPhone className="text-2xl text-gray-700 group-hover:text-blue-600 mb-2" />
-                                            <span className="text-[10px] font-bold uppercase text-gray-500">Call</span>
-                                        </button>
-                                        <button className="flex flex-col items-center justify-center p-5 bg-gray-50 rounded-xl hover:bg-blue-50 transition group">
-                                            <FiMessageSquare className="text-2xl text-gray-700 group-hover:text-blue-600 mb-2" />
-                                            <span className="text-[10px] font-bold uppercase text-gray-500">Text</span>
-                                        </button>
-                                        <button className="flex flex-col items-center justify-center p-5 bg-gray-50 rounded-xl hover:bg-blue-50 transition group">
-                                            <FiVideo className="text-2xl text-gray-700 group-hover:text-blue-600 mb-2" />
-                                            <span className="text-[10px] font-bold uppercase text-gray-500">Video</span>
-                                        </button>
+                                        <TogoleButton></TogoleButton>
                                     </div>
                                 </div>
 

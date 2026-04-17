@@ -1,4 +1,4 @@
-import React from 'react';
+
 import AllCard from './allCard';
 const appsPromise = async () => {
     const res = await fetch("http://localhost:3000//card.json");

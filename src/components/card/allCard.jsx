@@ -1,11 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-
+import Banner from '../banner/Banner';
 
 const statusColors = {
-
-    active: "badge-success",
+    On_Track: "badge-success",
     almost_due: "badge-warning",
     overdue: "badge-error"
 };

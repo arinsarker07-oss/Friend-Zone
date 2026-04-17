@@ -1,6 +1,13 @@
-import React from 'react';
 import { FiPlus } from "react-icons/fi";
-const Banner = () => {
+
+const appsPromise = async () => {
+    const res = await fetch("http://localhost:3000//card.json");
+    const data = await res.json();
+    return data;
+};
+const Banner = async() => {
+    const friends = await appsPromise();
+    
     return (<>
         <section className=" py-20 px-6">
             <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
@@ -19,19 +26,19 @@ const Banner = () => {
         </section>
         <section className='container mx-auto grid grid-cols-2 md:grid-cols-4 md:max-w-[1100] max-w-[400] gap-5'>
             <div className=" bg-base-100 shadow-sm gap-2 p-8 flex items-center justify-center flex-col">
-                <a className="font-semibold text-3xl text-[#244D3F]">0</a>
+                <a className="font-semibold text-3xl text-[#244D3F]">{friends.length}</a>
                 <p className='text-[#64748B] font-bold '>Total Friends</p>
             </div>
             <div className=" bg-base-100 shadow-sm gap-2 p-8 flex items-center justify-center flex-col">
-                <a className="font-semibold text-3xl text-[#244D3F]">0</a>
+                <a className="font-semibold text-3xl text-[#244D3F]">{friends.filter(friend=> friend.status=="On_Track").length}</a>
                 <p className='text-[#64748B] font-bold '>On Track</p>
             </div>
             <div className=" bg-base-100 shadow-sm gap-2 p-8 flex items-center justify-center flex-col">
-                <a className="font-semibold text-3xl text-[#244D3F]">0</a>
+                <a className="font-semibold text-3xl text-[#244D3F]">{friends.filter(friend=> friend.status=="overdue").length}</a>
                 <p className='text-[#64748B] font-bold '>Need Attention</p>
             </div>
             <div className=" bg-base-100 shadow-sm gap-2 p-8 flex items-center justify-center flex-col">
-                <a className="font-semibold text-3xl text-[#244D3F]">0</a>
+                <a className="font-semibold text-3xl text-[#244D3F]">{friends.filter(friend=> friend.days_since_contact >30).length}</a>
                 <p className='text-[#64748B] font-bold '>Interactions This Month</p>
             </div>
         </section>
