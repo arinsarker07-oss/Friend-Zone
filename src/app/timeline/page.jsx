@@ -20,6 +20,8 @@ const Timeline = () => {
         setCurrentTime(`${dateString} | ${timeString}`);
     }, []);
 
+
+
     const getActionIcon = (type) => {
         switch (type) {
             case 'Call': return <FiPhone className="text-blue-500 text-2xl" />;
@@ -28,7 +30,7 @@ const Timeline = () => {
             default: return null;
         }
     };
-
+    const [searchTerm, setSearchTerm] = useState('');
     return (
         <div className="container mx-auto p-6 bg-gray-50 min-h-screen">
             <h1 className="text-4xl font-bold text-slate-800 mb-6 text-start">Timeline</h1>
@@ -50,13 +52,19 @@ const Timeline = () => {
                     type="text"
                     placeholder="Search by name..."
                     className="border border-gray-300 rounded-full px-4 py-2 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
 
             {/* Timeline List */}
             <div className="space-y-4">
                 {installContact && installContact.length > 0 ? (
-                    installContact.filter(item => filter === 'All' || item.actionType === filter)
+                    installContact.filter(item => {
+                        const matchesCategory= filter === 'All' || item.actionType === filter;
+                        const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
+                        return matchesCategory && matchesSearch;
+                    })
                         .map((item, index) => (
                             <div key={index} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center gap-4">
                                 <div className="bg-blue-50 p-3 rounded-lg">
