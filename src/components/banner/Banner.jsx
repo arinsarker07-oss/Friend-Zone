@@ -1,7 +1,7 @@
 import { FiPlus } from "react-icons/fi";
 
 const appsPromise = async () => {
-    const res = await fetch("http://localhost:3000//card.json");
+    const res = await fetch("https://friends-zone-theta.vercel.app/card.json");
     const data = await res.json();
     return data;
 };

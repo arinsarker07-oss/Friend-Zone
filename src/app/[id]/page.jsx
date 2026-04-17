@@ -16,7 +16,7 @@ const statusColors = {
 };
 
 const appsPromise = async () => {
-    const res = await fetch("http://localhost:3000//card.json");
+    const res = await fetch("https://friends-zone-theta.vercel.app/card.json");
     const persondata = await res.json();
     return persondata;
 }

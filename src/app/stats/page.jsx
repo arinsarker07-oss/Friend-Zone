@@ -8,7 +8,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 export default function PieChartWithPaddingAngle() {
 
 const { installContact } = useContext (ContactContext)
-  // ২. ক্যালকুলেশন অংশটুকু এখানে বসান
+
   const callCount = installContact.filter(item => item.actionType === 'Call').length;
   const textCount = installContact.filter(item => item.actionType === 'Text').length;
   const videoCount = installContact.filter(item => item.actionType === 'Video').length;

@@ -17,7 +17,7 @@ const Timeline = () => {
         const now = new Date();
         const dateString = now.toLocaleDateString();
         const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        setCurrentTime(`${dateString} | ${timeString}`);
+       setCurrentTime(`${dateString} | ${timeString}`);
     }, []);
 
 
