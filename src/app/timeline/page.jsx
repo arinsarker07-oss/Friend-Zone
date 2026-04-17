@@ -1,110 +1,63 @@
-import React from 'react';
-import { HiOutlineVideoCamera, HiOutlineChatAlt2, HiOutlinePhone } from 'react-icons/hi';
-import { FiSearch } from 'react-icons/fi';
+"use client"
+import React, { useContext, useState } from 'react';
+import { FiPhone, FiMessageSquare, FiVideo } from 'react-icons/fi';
+import { ContactContext } from '@/components/contactProvider/contacrprovider';
 
-const appsPromise = async () => {
-    const res = await fetch("http://localhost:3000/card.json");
-    const data = await res.json();
-    return data;
-};
+const Timeline = () => {
+    const { installContact } = useContext(ContactContext);
+    const [filter, setFilter] = useState('All');
 
-const Timeline = async () => {
-    const users = await appsPromise();
-    const getStatusStyles = (status) => {
-        const baseIconClass = "p-2 rounded-lg text-xl";
-        switch (status) {
-            case 'On_Track': 
-                return { 
-                    icon: <div className={`${baseIconClass} bg-green-50 text-green-500`}><HiOutlineVideoCamera /></div>, 
-                    color: 'text-emerald-600' 
-                };
-            case 'almost_due': 
-                return { 
-                    icon: <div className={`${baseIconClass} bg-purple-50 text-purple-500`}><HiOutlineChatAlt2 /></div>, 
-                    color: 'text-purple-600' 
-                };
-            case 'overdue': 
-                return { 
-                    icon: <div className={`${baseIconClass} bg-red-50 text-red-500`}><HiOutlinePhone /></div>, 
-                    color: 'text-red-600' 
-                };
+    // Icon select korar logic
+    const getActionIcon = (type) => {
+        switch (type) {
+            case 'Call': return <FiPhone className="text-blue-500 text-2xl" />;
+            case 'Text': return <FiMessageSquare className="text-blue-400 text-2xl" />;
+            case 'Video': return <FiVideo className="text-indigo-500 text-2xl" />;
+            default: return null;
         }
     };
 
     return (
-        <div className="container mx-auto p-8 bg-white min-h-screen font-sans">
-            {/* Title Section */}
-            <div className="mb-6">
-                <h1 className="text-3xl font-bold text-slate-900">Timeline</h1>
-                <p className="text-gray-500 text-sm mt-1">A full history of your interactions across all friends.</p>
-            </div>
+        <div className="container mx-auto p-6 bg-gray-50 min-h-screen">
+            <h1 className="text-4xl font-bold text-slate-800 mb-6 text-start">Timeline</h1>
 
-            {/* Top Bar: Search and Filter */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-500">Filter by:</span>
-                    <select className="border border-gray-200 rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 shadow-sm">
-                        <option>All</option>
-                        <option>On Track</option>
-                        <option>Almost Due</option>
-                        <option>Overdue</option>
-                    </select>
-                </div>
-
-                <div className="flex items-center gap-4">
-                    <div className="relative">
-                        <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                        <input 
-                            type="text" 
-                            placeholder="Search timeline..." 
-                            className="pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm w-64 focus:outline-none focus:ring-1 focus:ring-blue-500 shadow-sm"
-                        />
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <span className="text-sm text-gray-500">Sort by:</span>
-                        <select className="border border-gray-200 rounded-lg px-3 py-1.5 text-sm bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 shadow-sm">
-                            <option>Default</option>
-                            <option>Newest</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            {/* Timeline Dynamic List */}
-            <div className="space-y-4">
-                {users.map((user) => {
-                    const { icon, color } = getStatusStyles(user.status);
-                    
-                    return (
-                        <div 
-                            key={user.id} 
-                            className="flex items-center justify-between p-5 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all group"
+            {/* Filter Buttons & Search */}
+            <div className="flex md:flex-row flex-col-reverse gap-4 justify-between items-center mb-8">
+                <div className="flex  bg-gray-200 p-1 rounded-full px-4 gap-4">
+                    {['All', 'Call', 'Text', 'Video'].map((item) => (
+                        <button 
+                            key={item}
+                            onClick={() => setFilter(item)}
+                            className={`px-4 py-1 rounded-full text-sm font-medium ${filter === item ? 'bg-blue-600 text-white' : 'text-gray-600'}`}
                         >
-                            <div className="flex items-center gap-4">
-                                {/* Dynamic Icon from React Icons */}
-                                {icon}
-                                
-                                <div>
-                                    <p className="text-base font-semibold text-slate-800">
-                                        <span className={color}>{user.status.replace('_', ' ')}</span>
-                                        <span className="text-gray-400 font-normal ml-1">with {user.name}</span>
-                                    </p>
-                                    <p className="text-sm text-gray-500 mt-0.5">{user.bio.substring(0, 60)}...</p>
-                                </div>
-                            </div>
+                            {item}
+                        </button>
+                    ))}
+                </div>
+                <input 
+                    type="text" 
+                    placeholder="Search by name..." 
+                    className="border border-gray-300 rounded-full px-4 py-2 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+            </div>
 
-                            <div className="flex flex-col items-end gap-2">
-                                <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">
-                                    {user.next_due_date}
-                                </p>
-                                {/* Message button on hover */}
-                                <button className="opacity-0 group-hover:opacity-100 bg-slate-900 text-white text-[10px] px-3 py-1.5 rounded-md transition-all">
-                                    Message
-                                </button>
-                            </div>
+            {/* Timeline List */}
+            <div className="space-y-4">
+                {installContact
+                    .filter(item => filter === 'All' || item.actionType === filter)
+                    .map((item, index) => (
+                    <div key={index} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center gap-4">
+                        <div className="bg-blue-50 p-3 rounded-lg">
+                            {getActionIcon(item.actionType)}
                         </div>
-                    );
-                })}
+                        <div className="flex-grow">
+                            <h3 className="font-semibold text-slate-800">
+                                <span className="font-bold">{item.actionType}</span> with {item.name}
+                            </h3>
+                            <p className="text-xs text-gray-400 mt-1">{item.date || 'Apr 17, 2026'}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

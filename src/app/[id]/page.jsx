@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 
 import {
-    FiBell, FiArchive, FiTrash2, FiPhone, FiMessageSquare, FiVideo
+    FiBell, FiArchive, FiTrash2, FiPhone, FiVideo
 } from 'react-icons/fi';
 
 
@@ -107,7 +107,7 @@ const cardDetailInfo = async ({ params }) => {
                                 <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
                                     <h3 className="font-bold text-[#244D3F] mb-8">Quick Check-In</h3>
                                     <div className="grid grid-cols-3 gap-4">
-                                        <TogoleButton></TogoleButton>
+                                        <TogoleButton person={person}></TogoleButton>
                                     </div>
                                 </div>
 
