@@ -36,5 +36,5 @@ Developed with ❤️ by [Arin Sarker]
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/your-username/friends-zone.git](https://github.com/your-username/friends-zone.git)
+git clone https://github.com/arinsarker07-oss/Friend-Zone.git
 cd friends-zone
